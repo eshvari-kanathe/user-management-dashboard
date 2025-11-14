@@ -73,28 +73,6 @@ const Dashboard = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        // <table className="border-2 p-3 m-3 justify-center">
-        //   <thead>
-        //     <tr>
-        //       <th>No.</th>
-        //       <th>Name</th>
-        //       <th>Email</th>
-        //       <th>Address</th>
-        //       <th>Phone</th>
-        //     </tr>
-        //   </thead>
-        //   <tbody>
-        //     {user.map((item, index) => (
-        //       <tr key={index}>
-        //         <td>{index + 1}</td>
-        //         <td>{item.name}</td>
-        //         <td>{item.email}</td>
-        //         <td>{item.address.city}</td>
-        //         <td>{item.phone}</td>
-        //       </tr>
-        //     ))}
-        //   </tbody>
-        // </table>
       )}
     </div>
   );
