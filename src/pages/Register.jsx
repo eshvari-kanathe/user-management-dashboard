@@ -1,24 +1,88 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Register = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const navigate=useNavigate()
+
+  const savedata=(e)=>{
+    e.preventDefault()
+    console.log(formData,"data data")
+    localStorage.setItem("email",formData.email)
+    localStorage.setItem("password",formData.password)
+    toast("data saved in localstorage");
+    navigate("/")
+
+  }
+  const handleValue=(e)=>{
+    const {name,value}=e.target
+    setFormData({...formData,[name]:value})
+  }
+
+  const newww=()=>{
+    navigate("/")
+  }
+ 
   return (
-    <div>
-        <h1>Register</h1>
-        <form>
-              <h1 class="text-gray-500 dark:text-gray-400">
-    Hello world!
-  </h1>
-    <div className="flex items-center justify-center h-screen bg-blue-500 text-white text-3xl font-bold">
-      Tailwind is Working! 🎉
-    </div>
-            <input type='text' placeholder='enter your name'/>
-            <input type='text' placeholder='enter email'/>
-            <input type="password" placeholder='enter password' />
-            <button>Login/Sign in</button>
+    <div className="flex items-center justify-center bg-gray-800 min-h-screen">
+      <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-lg">
+        <h1 className="text-3xl text-center text-blue-600">Register</h1>
+        <form className="space-y-4" onSubmit={savedata}>
+          <div>
+            <input
+              type="text"
+              name="name"
+              autoComplete="off"
+              onChange={handleValue}
+              value={formData.name}
+              placeholder="enter your name"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              name="email"
+              autoComplete="off"
+              onChange={handleValue}
+              value={formData.email}
+              placeholder="enter email"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
 
+          <div>
+            <input
+              type="password"
+              name="password"
+              autoComplete="off"
+              onChange={handleValue}
+              value={formData.password}
+              placeholder="enter password"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all duration-200"
+          >
+            Register
+          </button>
         </form>
+        <p className="mt-4 text-sm text-center text-gray-500">
+          Already have an account?{" "}
+          <button onClick={newww} className="text-blue-600 hover:underline">
+            Sign in
+          </button>
+        </p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

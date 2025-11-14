@@ -1,12 +1,11 @@
-import React from 'react'
-import Login from './pages/Login'
-import Register from './pages/Register'
+import { ToastContainer } from 'react-toastify'
+import AppRoute from './routes/appRoute'
 
 const App = () => {
   return (
     <div>
-      {/* <Login/> */}
-      <Register/>
+      <ToastContainer/>
+      <AppRoute/>
     </div>
   )
 }
